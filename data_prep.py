@@ -106,5 +106,3 @@ final_s_kva_df.to_csv(os.path.join(output_path, 'k_S_kVA.csv'), index=False)
 final_std_p_kw_df.to_csv(os.path.join(output_path, 'std_P_kW.csv'), index=False)
 final_std_s_kva_df.to_csv(os.path.join(output_path, 'std_S_kVA.csv'), index=False)
 final_p_kw_sum_df[['SensorDateTime', 'sum_P_kW']].to_csv(os.path.join(output_path, 'total_power.csv'), index=False)
-
-#
