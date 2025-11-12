@@ -1,6 +1,4 @@
-import torch.nn.functional as F
 from torch_geometric.loader import DataLoader
-from torch_geometric.transforms import NormalizeFeatures
 
 from data_preprocessing import *
 from model_definition import *
