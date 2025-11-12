@@ -2,8 +2,8 @@ import os
 import pandas as pd
 
 # Define folder paths
-folder_path = r'C:\Users\USER\source\repos\walerazaq\spatiotemporal-energy-forecasting\data\hipe_cleaned_v1.0.1_geq_2017-10-01_lt_2018-01-01'
-output_path = r'C:\Users\USER\source\repos\walerazaq\spatiotemporal-energy-forecasting\cleaned_data'
+folder_path = r'C:\Users\razaq\Downloads\hipe_data\hipe_cleaned_v1.0.1_geq_2017-10-01_lt_2018-01-01'
+output_path = r'C:\Users\razaq\Downloads\hipe_data\cleaned'
 
 # work hours
 start_hour = 6
