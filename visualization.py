@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 def plot_predictions(pred, act, start=0, end=None):
     # Set default end to the length of the array if not provided
     if end is None or end > len(pred):
@@ -23,5 +25,3 @@ def plot_predictions(pred, act, start=0, end=None):
 
     # Show the plot
     plt.show()
-
-plot_predictions(pred, act, start=0, end=None)
