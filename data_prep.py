@@ -2,8 +2,8 @@ import os
 import pandas as pd
 
 # Define folder paths
-folder_path = r'C:\Users\e16010620\Downloads\hipe_cleaned_v1.0.1_geq_2017-10-01_lt_2018-01-01'
-output_path = r'C:\Users\e16010620\Documents\Project\workhour'
+folder_path = r'C:\Users\USER\source\repos\walerazaq\spatiotemporal-energy-forecasting\data\hipe_cleaned_v1.0.1_geq_2017-10-01_lt_2018-01-01'
+output_path = r'C:\Users\USER\source\repos\walerazaq\spatiotemporal-energy-forecasting\cleaned_data'
 
 # work hours
 start_hour = 6
@@ -102,7 +102,9 @@ final_p_kw_sum_df['sum_P_kW'] = final_p_kw_sum_df.iloc[:, 1:].sum(axis=1)
 
 # Save each dataframe to CSV
 final_p_kw_df.to_csv(os.path.join(output_path, 'P_kW.csv'), index=False)
-final_s_kva_df.to_csv(os.path.join(output_path, 'k_S_kVA.csv'), index=False)
+final_s_kva_df.to_csv(os.path.join(output_path, 'S_kVA.csv'), index=False)
 final_std_p_kw_df.to_csv(os.path.join(output_path, 'std_P_kW.csv'), index=False)
 final_std_s_kva_df.to_csv(os.path.join(output_path, 'std_S_kVA.csv'), index=False)
 final_p_kw_sum_df[['SensorDateTime', 'sum_P_kW']].to_csv(os.path.join(output_path, 'total_power.csv'), index=False)
+
+print("Done!")
