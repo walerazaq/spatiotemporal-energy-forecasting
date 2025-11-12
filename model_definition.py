@@ -1,3 +1,8 @@
+import torch
+import torch.nn as nn
+
+from torch_geometric.nn import GCNConv, EdgeConv, global_mean_pool, global_max_pool, global_add_pool
+
 # Graph pooling
 
 def graph_readout(x, method, batch):
