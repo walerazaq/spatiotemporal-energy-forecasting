@@ -14,6 +14,36 @@ The study utilises the publicly available High-resolution Industrial Production 
 - **Data**: Smart meter readings from 10 machines recorded over 3 months.
 - **Features**: Active power, apparent power, and their standard deviations over 10-minute intervals.
 
+## Repository Structure
+The code is organised as a Python package under `spatiotemporal_energy_forecasting/`:
+
+- `data_prep.py`: converts raw HIPE machine CSV files into model-ready feature and target CSV files.
+- `dataset.py`: builds windowed PyTorch Geometric graph samples.
+- `model.py`: defines the EdgeConv + GCN + LSTM forecasting model.
+- `training.py`: contains train, validation, and test loops.
+- `pipeline.py` and `cli.py`: connect the dataset, model, training, evaluation, and optional plotting.
+
+## Usage
+Install dependencies in your Python environment:
+
+```bash
+pip install -r requirements.txt
+```
+
+Prepare the cleaned HIPE CSV files:
+
+```bash
+python -m spatiotemporal_energy_forecasting.data_prep --input-dir path/to/raw/hipe_csvs --output-dir path/to/cleaned
+```
+
+Train and evaluate the model:
+
+```bash
+python -m spatiotemporal_energy_forecasting --data-dir path/to/cleaned --horizon 1 --window-size 12 --stride 1
+```
+
+You can also set `HIPE_CLEANED_DIR` instead of passing `--data-dir`.
+
 ## Methodology
 1. **Dynamic Network Construction**:
    - Machines are modelled as graph nodes.

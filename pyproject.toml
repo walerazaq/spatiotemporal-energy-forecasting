@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spatiotemporal-energy-forecasting"
+version = "0.1.0"
+description = "Spatiotemporal graph neural network framework for HIPE energy forecasting."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "numpy",
+    "torch",
+    "torch-geometric",
+    "scikit-learn",
+    "tqdm",
+    "matplotlib",
+]
+
+[tool.setuptools.packages.find]
+include = ["spatiotemporal_energy_forecasting*"]
+
