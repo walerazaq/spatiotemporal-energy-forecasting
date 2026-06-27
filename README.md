@@ -18,6 +18,8 @@ The study utilises the publicly available High-resolution Industrial Production 
 The code is organised as a Python package under `spatiotemporal_energy_forecasting/`:
 
 - `data_prep.py`: converts raw HIPE machine CSV files into model-ready feature and target CSV files.
+- `config.py`: centralises training configuration defaults.
+- `graph.py`: builds activity adjacency matrices and PyTorch Geometric edge tensors.
 - `dataset.py`: builds windowed PyTorch Geometric graph samples.
 - `model.py`: defines the EdgeConv + GCN + LSTM forecasting model.
 - `training.py`: contains train, validation, and test loops.
@@ -43,6 +45,7 @@ python -m spatiotemporal_energy_forecasting --data-dir path/to/cleaned --horizon
 ```
 
 You can also set `HIPE_CLEANED_DIR` instead of passing `--data-dir`.
+If the package is installed, the equivalent console commands are `stef-prepare` and `stef-train`.
 
 ## Methodology
 1. **Dynamic Network Construction**:

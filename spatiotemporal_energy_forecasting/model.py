@@ -24,17 +24,6 @@ def graph_readout(x: torch.Tensor, method: str, batch: torch.Tensor) -> torch.Te
     raise ValueError(f"Undefined readout operation: {method}")
 
 
-def _coerce_edge_inputs(
-    edge_index: torch.Tensor,
-    edge_weight: torch.Tensor | None = None,
-) -> tuple[torch.Tensor, torch.Tensor | None]:
-    if not getattr(edge_index, "is_sparse", False):
-        return edge_index, edge_weight
-
-    coo = edge_index.to_sparse_coo().coalesce()
-    return coo.indices().long(), coo.values().float()
-
-
 class GraphTemporalModel(nn.Module):
     """EdgeConv + GCN spatial encoder followed by an LSTM temporal encoder."""
 
@@ -83,7 +72,6 @@ class GraphTemporalModel(nn.Module):
         batch: torch.Tensor,
         edge_weight: torch.Tensor | None = None,
     ) -> torch.Tensor:
-        edge_index, edge_weight = _coerce_edge_inputs(edge_index, edge_weight)
         _, seq_len, _ = x.shape
         spatial_steps = []
 
@@ -101,7 +89,3 @@ class GraphTemporalModel(nn.Module):
         sequence, _ = self.lstm(sequence)
         output = self.mlp(sequence[:, -1, :])
         return output.reshape(-1)
-
-
-graphTS_model = GraphTemporalModel
-

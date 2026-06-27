@@ -18,6 +18,9 @@ dependencies = [
     "matplotlib",
 ]
 
+[project.scripts]
+stef-prepare = "spatiotemporal_energy_forecasting.data_prep:main"
+stef-train = "spatiotemporal_energy_forecasting.cli:main"
+
 [tool.setuptools.packages.find]
 include = ["spatiotemporal_energy_forecasting*"]
-

@@ -3,6 +3,8 @@ from __future__ import annotations
 import argparse
 import os
 
+from .config import TrainingConfig
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
@@ -36,7 +38,7 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("--data-dir is required unless HIPE_CLEANED_DIR is set")
 
     try:
-        from .pipeline import TrainingConfig, run_training
+        from .pipeline import run_training
     except ImportError as exc:
         parser.error(
             "Training dependencies are not installed. "

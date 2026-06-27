@@ -20,16 +20,11 @@ def _forward_batch(model, data, device: torch.device) -> tuple[torch.Tensor, tor
     y = data.y.to(device)
 
     edge_index = getattr(data, "edge_index", None)
-    if edge_index is not None:
-        edge_index = edge_index.to(device)
-        return model(x, edge_index, batch, _edge_weight(data, device)), y
+    if edge_index is None:
+        raise AttributeError("Batch data must contain edge_index")
 
-    adj = getattr(data, "adj", None)
-    if adj is not None:
-        adj = adj.to(device)
-        return model(x, adj, batch), y
-
-    raise AttributeError("Batch data must contain edge_index or adj")
+    edge_index = edge_index.to(device)
+    return model(x, edge_index, batch, _edge_weight(data, device)), y
 
 
 def train(
