@@ -44,8 +44,8 @@ Train and evaluate the model:
 python -m spatiotemporal_energy_forecasting --data-dir path/to/cleaned --horizon 1 --window-size 12 --stride 1
 ```
 
-You can also set `HIPE_CLEANED_DIR` instead of passing `--data-dir`.
-If the package is installed, the equivalent console commands are `stef-prepare` and `stef-train`.
+Set `HIPE_CLEANED_DIR` to avoid passing `--data-dir`.
+Installed console commands are `stef-prepare` and `stef-train`.
 
 ## Methodology
 1. **Dynamic Network Construction**:
